@@ -1,0 +1,92 @@
+<div class="container mb-5 mt-5">
+    <label for="posts">
+        <h2>Edit This Post</h2>
+    </label>
+    <form class="form-control" [formGroup]="editPost" (ngSubmit)="upDatePost()">
+        <div class="container">
+            <div class="mb-3">
+                <label for="title">
+                    Title Post
+                </label>
+                <input type="text" name="title" formControlName="title" id="title" class="form-control"
+                    [ngClass]="{'is-valid': submited && editPost.controls.title.valid, 'is-invalid': submited && editPost.controls.title.invalid}">
+                <div *ngIf="editPost.controls.title.errors" class="invalid-feedback d-block">
+                    <div *ngIf="editPost.controls.title.errors.maxlength && submited">
+                        invalid Tilte .. must be under 10 chars
+                    </div>
+                    <div *ngIf="editPost.controls.title.errors.required && submited">
+                        Title is required .. please fill it in
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="mb-3">
+                <label for="description">
+                    Name Product
+                </label>
+                <textarea rows="5" name="description" formControlName="description" id="description" class="form-control"
+                    [ngClass]="{'is-valid': submited && editPost.controls.description.valid ,'is-invalid': submited && editPost.controls.description.invalid}">
+                </textarea>
+                <div *ngIf="submited && editPost.controls.description.errors" class="invalid-feedback">
+                    <div *ngIf="editPost.controls.description.errors.minlength">
+                        this Field must been over 5 chars
+                    </div>
+                    <div *ngIf="editPost.controls.description.errors.required ">
+                        this must been not Empty
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="mb-3">
+                <label for="categoryPost">
+                   categoryPostPost Post
+                </label>
+                <div class="list-group empty-state" for="categoryPost">
+                    <select class="form-control list-group btn btn-outline-primary" formControlName="categoryPost"
+                        id="categoryPost"  [ngClass]="{'is-valid': submited && editPost.controls.categoryPost.valid ,'is-invalid': submited && editPost.controls.categoryPost.invalid}">
+                        <option class="list-group-item list-group-item-action list-group-item-primary" value="sports">Sports</option>
+                        <option class="list-group-item list-group-item-action list-group-item-secondary" value="technologies">Technologies
+                        </option>
+                        <option class="list-group-item list-group-item-action list-group-item-primary" value="economies">Economies
+                        </option>
+                        <option class="list-group-item list-group-item-action list-group-item-secondary" value="society">Society
+                        </option>
+                        <option class="list-group-item list-group-item-action list-group-item-primary" value="culture">Culture</option>
+                    </select>
+                    <div *ngIf="submited && editPost.controls.categoryPost.errors" class="invalid-feedback">
+                        <div *ngIf="editPost.controls.categoryPost.errors.required ">
+                            this must been not Empty
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+
+
+
+            <div class="mb-3">
+                <label for="date">
+                    Name Product
+                </label>
+                <input type="date" name="date" formControlName="date" id="date" class="form-control"
+                    [ngClass]="{'is-valid': submited && editPost.controls.date.valid ,'is-invalid': submited && editPost.controls.date.invalid}">
+                <div *ngIf="submited && editPost.controls.date.errors" class="invalid-feedback">
+                    <div *ngIf="editPost.controls.date.errors.required ">
+                        this must been not Empty
+                    </div>
+                </div>
+            </div>
+
+
+            <input type="submit" name="send" class="btn btn-success mt-3 container" value="Update Post">
+        </div>
+
+    </form>
+</div>

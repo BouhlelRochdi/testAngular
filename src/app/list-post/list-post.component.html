@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <label for="idprodut">
+        <h2>List Users</h2>
+    </label>
+    <div>
+    <form class="form-control">
+        <table class="table table-bordred table-hover table-striped">
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+            <tr *ngFor="let post of posts; let i = index">
+                <td>{{post.titlePost}}</td>
+                <td>{{post.descPost}}</td>
+                <td>{{post.category}}</td>
+                <td>{{post.datePost}}</td>
+                <td>
+                    <a class="btn btn-outline-primary" [routerLink]="['../editList', i]">Edit this Post</a>
+                    <a class="btn btn-outline-danger" (click)="deletePost(i)">Delete this Post</a>
+                </td>
+            </tr>
+            
+        </table>
+    </form>
+    </div>  
+</div>
